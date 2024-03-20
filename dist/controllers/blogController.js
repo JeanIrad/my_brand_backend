@@ -67,26 +67,23 @@ var BlogController = /** @class */ (function () {
         });
     }); });
     BlogController.createBlog = (0, catchAsync_1.default)(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-        var _b, title, description, createdBy, uploadImage, newBlog;
-        var _c;
-        return __generator(_a, function (_d) {
-            switch (_d.label) {
+        var uploadImage, newBlog;
+        var _b;
+        return __generator(_a, function (_c) {
+            switch (_c.label) {
                 case 0:
-                    _b = req.body, title = _b.title, description = _b.description, createdBy = _b.createdBy;
+                    console.log("body", req.body);
                     return [4 /*yield*/, cloudinary_1.default.uploader.upload(req.file.path)];
                 case 1:
-                    uploadImage = _d.sent();
-                    console.log(uploadImage.secure_url);
-                    newBlog = new blogModel_1.default({
-                        title: title,
-                        description: description,
-                        imageUrl: uploadImage.secure_url,
-                        fileName: ((_c = req.file) === null || _c === void 0 ? void 0 : _c.filename) || "",
-                        createdBy: createdBy,
-                    });
-                    return [4 /*yield*/, newBlog.save()];
+                    uploadImage = _c.sent();
+                    return [4 /*yield*/, new blogModel_1.default({
+                            title: req.body.title,
+                            description: req.body.description,
+                            imageUrl: uploadImage.secure_url,
+                            fileName: (_b = req.file) === null || _b === void 0 ? void 0 : _b.filename,
+                        }).save()];
                 case 2:
-                    _d.sent();
+                    newBlog = _c.sent();
                     res.status(201).json({
                         status: "success",
                         data: newBlog,

@@ -28,28 +28,38 @@ var blogSchema = new mongoose_1.Schema({
     title: {
         type: String,
         required: [true, "A blog must have a title"],
-        min: 2,
+        minlength: 2,
+        maxlength: 255,
     },
     description: {
         type: String,
         required: [true, "A blog must have a description"],
         trim: true,
-        // minlength: 100
         minlength: 10,
     },
-    image: {
-        data: Buffer,
-        contentType: String,
-    },
+    // image: {
+    //   data: Buffer,
+    //   contentType: String,
+    // },
     imageUrl: {
         type: String,
     },
-    createdBy: {
+    author: {
         type: mongoose_1.default.Schema.Types.ObjectId,
         ref: "User",
         required: true,
     },
     fileName: String,
+    comment: {
+        type: [mongoose_1.default.Schema.Types.ObjectId],
+        ref: "Comment",
+    },
+    likes: {
+        type: [mongoose_1.default.Schema.Types.ObjectId],
+        ref: "User",
+    },
+}, {
+    timestamps: true,
 });
 var Blog = (0, mongoose_1.model)("Blog", blogSchema);
 exports.default = Blog;
