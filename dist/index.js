@@ -25,7 +25,7 @@ var verifyUserEmail = userController_1.default.verifyUserEmail;
 var app = (0, express_1.default)();
 // app.use(cookieParser());
 app.use((0, cors_1.default)({
-    origin: "jadoiradukunda.onrender.com",
+    origin: "*",
     methods: "*",
 }));
 app.use(express_1.default.json());
