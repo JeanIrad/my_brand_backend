@@ -22,18 +22,22 @@ export default class BlogController {
 
   static createBlog = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
-      // console.log(req.body);
-      const { title, description, createdBy } = req.body;
+      console.log("body", req.body);
+      // const { title, description } = req.body;
       const uploadImage = await cloudinary.uploader.upload(req.file!.path);
-      console.log(uploadImage.secure_url);
-      const newBlog = new Blog({
-        title,
-        description,
+      // console.log(uploadImage.secure_url);
+      // const newBlog = new Blog({
+      //   title,
+      //   description,
+      //   imageUrl: uploadImage.secure_url,
+      //   fileName: req.file?.filename || "",
+      // });
+      const newBlog = await new Blog({
+        title: req.body.title,
+        description: req.body.description,
         imageUrl: uploadImage.secure_url,
-        fileName: req.file?.filename || "",
-        createdBy,
-      });
-      await newBlog.save();
+        fileName: req.file?.filename,
+      }).save();
       res.status(201).json({
         status: "success",
         data: newBlog,
