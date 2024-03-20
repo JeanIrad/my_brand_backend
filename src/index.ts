@@ -42,14 +42,14 @@ app.get("/", (req, res) => {
     message: "welcome to my portfolio",
   });
 });
-app.use("/api/v1/blogs", blogRouter);
-app.use("/api/v1/auth", authRoute);
-app.use("/api/v1/users", userRouter);
-app.use("/api/v1/users/:verifyId/verify/:verifyToken", verifyUserEmail);
-app.use("/api/v1/messages/", messageRouter);
-app.use("/api/v1/skills/", skillsRouter);
-app.use("/api/v1/aboutme/", aboutMeRouter);
-app.use("/api/v1/portfolio/", portfolioRouter);
+app.use("/api/blogs", blogRouter);
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRouter);
+app.use("/api/users/:verifyId/verify/:verifyToken", verifyUserEmail);
+app.use("/api/messages/", messageRouter);
+app.use("/api/skills/", skillsRouter);
+app.use("/api/aboutme/", aboutMeRouter);
+app.use("/api/portfolio/", portfolioRouter);
 
 app.use("/api-docs", swaggerui.serve, swaggerui.setup(swaggerdocs));
 

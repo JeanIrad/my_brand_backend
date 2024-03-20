@@ -188,7 +188,7 @@ const deleteUser = {
 };
 
 const UserDocs = {
-  "/api/v1/users": {
+  "/api/users": {
     get: {
       summary: "Get a list of all users",
       ...listUsers,
@@ -198,7 +198,7 @@ const UserDocs = {
       ...createUser,
     },
   },
-  "/api/v1/users/{id}": {
+  "/api/users/{id}": {
     get: {
       summary: "Get user by ID",
       ...getOneUser,
