@@ -80,7 +80,8 @@ var BlogController = /** @class */ (function () {
                             title: req.body.title,
                             description: req.body.description,
                             imageUrl: uploadImage.secure_url,
-                            fileName: (_b = req.file) === null || _b === void 0 ? void 0 : _b.filename,
+                            fileName: ((_b = req.file) === null || _b === void 0 ? void 0 : _b.filename) || "",
+                            author: req.body.author,
                         }).save()];
                 case 2:
                     newBlog = _c.sent();

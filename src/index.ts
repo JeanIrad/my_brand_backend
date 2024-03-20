@@ -26,9 +26,8 @@ const app = express();
 // app.use(cookieParser());
 app.use(
   cors({
-    origin: "*",
-    methods: "POST,GET,HEAD,DELETE,PUT,PATCH,UPDATE",
-    credentials: true,
+    origin: "jadoiradukunda.onrender.com",
+    methods: "*",
   })
 );
 app.use(express.json());

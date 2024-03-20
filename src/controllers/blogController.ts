@@ -36,7 +36,8 @@ export default class BlogController {
         title: req.body.title,
         description: req.body.description,
         imageUrl: uploadImage.secure_url,
-        fileName: req.file?.filename,
+        fileName: req.file?.filename || "",
+        author: req.body.author,
       }).save();
       res.status(201).json({
         status: "success",
