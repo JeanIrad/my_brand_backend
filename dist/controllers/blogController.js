@@ -67,30 +67,26 @@ var BlogController = /** @class */ (function () {
         });
     }); });
     BlogController.createBlog = (0, catchAsync_1.default)(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-        var _b, title, description, image, createdBy, uploadImage, newBlog_1, newBlog;
-        return __generator(_a, function (_c) {
-            switch (_c.label) {
+        var _b, title, description, createdBy, uploadImage, newBlog;
+        var _c;
+        return __generator(_a, function (_d) {
+            switch (_d.label) {
                 case 0:
-                    if (!req.file) return [3 /*break*/, 3];
-                    _b = req.body, title = _b.title, description = _b.description, image = _b.image, createdBy = _b.createdBy;
+                    _b = req.body, title = _b.title, description = _b.description, createdBy = _b.createdBy;
                     return [4 /*yield*/, cloudinary_1.default.uploader.upload(req.file.path)];
                 case 1:
-                    uploadImage = _c.sent();
+                    uploadImage = _d.sent();
                     console.log(uploadImage.secure_url);
-                    newBlog_1 = new blogModel_1.default({
+                    newBlog = new blogModel_1.default({
                         title: title,
                         description: description,
                         imageUrl: uploadImage.secure_url,
-                        fileName: req.file.filename,
+                        fileName: ((_c = req.file) === null || _c === void 0 ? void 0 : _c.filename) || "",
                         createdBy: createdBy,
                     });
-                    return [4 /*yield*/, newBlog_1.save()];
+                    return [4 /*yield*/, newBlog.save()];
                 case 2:
-                    _c.sent();
-                    _c.label = 3;
-                case 3: return [4 /*yield*/, blogModel_1.default.create(req.body)];
-                case 4:
-                    newBlog = _c.sent();
+                    _d.sent();
                     res.status(201).json({
                         status: "success",
                         data: newBlog,

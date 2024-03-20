@@ -48,21 +48,6 @@ var UserController = /** @class */ (function () {
     }
     var _a;
     _a = UserController;
-    /**
-     * @swagger
-     * tags:
-     *   name: User
-     *   description: list of users
-     * /api/v1/users:
-     *   get:
-     *     summary: Get all users
-     *     description: Retrieve a list of all users.
-     *     responses:
-     *       '200':
-     *         description: A list of users.
-     *       '404':
-     *         description: No users found.
-     */
     UserController.getAllUsers = (0, catchAsync_1.default)(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
         var users;
         return __generator(_a, function (_b) {
@@ -82,25 +67,6 @@ var UserController = /** @class */ (function () {
             }
         });
     }); });
-    /**
-     * @swagger
-     * /api/v1/users/{id}:
-     *   get:
-     *     summary: Get a user by ID
-     *     description: Retrieve a user by their ID.
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         schema:
-     *           type: string
-     *         required: true
-     *         description: ID of the user to retrieve.
-     *     responses:
-     *       '200':
-     *         description: The user object.
-     *       '404':
-     *         description: No user found with that ID.
-     */
     UserController.getUser = (0, catchAsync_1.default)(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
         var id, user;
         return __generator(_a, function (_b) {
@@ -121,25 +87,6 @@ var UserController = /** @class */ (function () {
             }
         });
     }); });
-    /**
-     * @swagger
-     * /api/v1/users/{id}:
-     *   patch:
-     *     summary: Update a user by ID
-     *     description: Update a user's details by their ID.
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         schema:
-     *           type: string
-     *         required: true
-     *         description: ID of the user to update.
-     *     responses:
-     *       '200':
-     *         description: The updated user object.
-     *       '404':
-     *         description: No user found with that ID.
-     */
     UserController.updateUser = (0, catchAsync_1.default)(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
         var id, user, updatedUser;
         return __generator(_a, function (_b) {
@@ -165,25 +112,6 @@ var UserController = /** @class */ (function () {
             }
         });
     }); });
-    /**
-     * @swagger
-     * /api/v1/users/{id}:
-     *   delete:
-     *     summary: Delete a user by ID
-     *     description: Delete a user by their ID.
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         schema:
-     *           type: string
-     *         required: true
-     *         description: ID of the user to delete.
-     *     responses:
-     *       '204':
-     *         description: User deleted successfully.
-     *       '404':
-     *         description: No user found with that ID.
-     */
     UserController.deleteUser = (0, catchAsync_1.default)(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
         var id, user;
         return __generator(_a, function (_b) {
@@ -203,33 +131,6 @@ var UserController = /** @class */ (function () {
             }
         });
     }); });
-    /**
-     * @swagger
-     * /api/v1/users/verify/{verifyId}/{verifyToken}:
-     *   get:
-     *     summary: Verify user's email
-     *     description: Verify a user's email using the verification token and ID.
-     *     parameters:
-     *       - in: path
-     *         name: verifyId
-     *         schema:
-     *           type: string
-     *         required: true
-     *         description: ID of the user to verify.
-     *       - in: path
-     *         name: verifyToken
-     *         schema:
-     *           type: string
-     *         required: true
-     *         description: Verification token sent to the user's email.
-     *     responses:
-     *       '200':
-     *         description: User email verified successfully.
-     *       '400':
-     *         description: Invalid token provided.
-     *       '404':
-     *         description: No user found with the provided ID.
-     */
     UserController.verifyUserEmail = (0, catchAsync_1.default)(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
         var user, token;
         return __generator(_a, function (_b) {

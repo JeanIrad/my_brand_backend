@@ -33,6 +33,9 @@ var blogSchema = new mongoose_1.Schema({
     description: {
         type: String,
         required: [true, "A blog must have a description"],
+        trim: true,
+        // minlength: 100
+        minlength: 10,
     },
     image: {
         data: Buffer,

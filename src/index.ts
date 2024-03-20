@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import swaggerjsdoc from "swagger-jsdoc";
 import swaggerui from "swagger-ui-express";
+import serverless from "serverless-http";
 
 import blogRouter from "./routers/blogRouter";
 import HandleInvalidUrl from "./utils/invalidUrl";
@@ -35,6 +36,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan("dev"));
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "welcome to my portfolio",
+  });
+});
 app.use("/api/v1/blogs", blogRouter);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", userRouter);
@@ -108,4 +115,6 @@ app.use("/api-docs", swaggerui.serve, swaggerui.setup(swaggerSpec));
 
 app.use("*", handleInvalidUrl);
 app.use(sendErrorDev);
+// app.use("/.netlify/functions/index");
 export default app;
+// module.exports.handler = serverless(app);
