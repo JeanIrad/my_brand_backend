@@ -1,14 +1,38 @@
 import path from "path";
 import mimetype from "mime-types";
 import multer from "multer";
+import fs from "fs";
+
+const imageStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const dir = "./uploads/images";
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    cb(null, dir);
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
+    );
+  },
+});
 
 const storage = multer.diskStorage({
   destination: function (req, file, callBack) {
-    // callBack(null, path.resolve(__dirname, "../uploads/blogs"));
-    callBack(null, `${__dirname}/uploads/blogs`);
+    const dir = "../uploads/images";
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    callBack(null, dir);
   },
   filename: function (req, file, callBack) {
-    callBack(null, `_${Date.now()}_${file.originalname}`);
+    callBack(
+      null,
+      `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
+    );
+    // callBack(null, `_${Date.now()}_${file.originalname}`);
   },
 });
 const filterFile = (req: any, file: any, callBack: Function) => {
