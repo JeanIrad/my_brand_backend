@@ -11,7 +11,7 @@
     "start": "node ./dist/server.js && set NODE_ENV=production",
     "test": "jest --forceExit --coverage",
     "swagger": "swagger-jsdoc -o ./swagger.json ./swaggerOptions.ts",
-    "build": "npm install"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",

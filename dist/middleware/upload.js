@@ -3,11 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var path_1 = __importDefault(require("path"));
 var multer_1 = __importDefault(require("multer"));
 var storage = multer_1.default.diskStorage({
     destination: function (req, file, callBack) {
-        callBack(null, path_1.default.resolve(__dirname, "../uploads/blogs"));
+        // callBack(null, path.resolve(__dirname, "../uploads/blogs"));
+        callBack(null, "../uploads/blogs");
     },
     filename: function (req, file, callBack) {
         callBack(null, "_".concat(Date.now(), "_").concat(file.originalname));

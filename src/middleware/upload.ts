@@ -4,7 +4,8 @@ import multer from "multer";
 
 const storage = multer.diskStorage({
   destination: function (req, file, callBack) {
-    callBack(null, path.resolve(__dirname, "../uploads/blogs"));
+    // callBack(null, path.resolve(__dirname, "../uploads/blogs"));
+    callBack(null, "../uploads/blogs");
   },
   filename: function (req, file, callBack) {
     callBack(null, `_${Date.now()}_${file.originalname}`);
