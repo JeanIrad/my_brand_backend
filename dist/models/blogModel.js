@@ -47,7 +47,7 @@ var blogSchema = new mongoose_1.Schema({
     author: {
         type: mongoose_1.default.Schema.Types.ObjectId,
         ref: "User",
-        required: true,
+        // required: true,
     },
     fileName: String,
     comment: {

@@ -8,11 +8,26 @@ const { getAllBlogs, createBlog, deleteBlog, updateBlog, getBlog } =
 const { protectRoutes, checkAdmin } = AuthController;
 const blogRouter = Router();
 
-blogRouter.route("/").get(getAllBlogs).post(upload.single("image"), createBlog);
+blogRouter
+  .route("/")
+  .get(getAllBlogs)
+  .post(
+    (req, file, next) => {
+      console.log("receiving", req.body);
+      if (req.file) {
+        console.log(req.file.filename);
+        next();
+      } else {
+        next();
+      }
+    },
+    upload.single("image"),
+    createBlog
+  );
 blogRouter
   .route("/:id")
   .get(protectRoutes, getBlog)
-  .patch(protectRoutes, checkAdmin, updateBlog)
+  .put(protectRoutes, checkAdmin, updateBlog)
   .delete(protectRoutes, checkAdmin, deleteBlog);
 
 export default blogRouter;

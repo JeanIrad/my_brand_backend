@@ -4,7 +4,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import swaggerjsdoc from "swagger-jsdoc";
 import swaggerui from "swagger-ui-express";
-import serverless from "serverless-http";
 
 import blogRouter from "./routers/blogRouter";
 import HandleInvalidUrl from "./utils/invalidUrl";
@@ -32,7 +31,9 @@ app.use(
 );
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+// app.use(bodyParser.)
 
 app.use(morgan("dev"));
 app.get("/", (req, res) => {
