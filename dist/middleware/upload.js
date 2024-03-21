@@ -7,7 +7,7 @@ var multer_1 = __importDefault(require("multer"));
 var storage = multer_1.default.diskStorage({
     destination: function (req, file, callBack) {
         // callBack(null, path.resolve(__dirname, "../uploads/blogs"));
-        callBack(null, "../uploads/blogs");
+        callBack(null, "".concat(__dirname, "/uploads/blogs"));
     },
     filename: function (req, file, callBack) {
         callBack(null, "_".concat(Date.now(), "_").concat(file.originalname));
@@ -28,4 +28,5 @@ var upload = (0, multer_1.default)({
     limits: { fileSize: 1024 * 1024 },
     fileFilter: filterFile,
 });
+console.log(__dirname);
 exports.default = upload;
