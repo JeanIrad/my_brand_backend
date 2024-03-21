@@ -12,7 +12,7 @@ var DB_LOCAL = process.env.DB_LOCAL;
 var DB_LOCAL_TEST = process.env.DB_LOCAL_TEST;
 var DB = process.env.DB;
 mongoose_1.default
-    .connect(DB_LOCAL)
+    .connect(DB)
     .then(function () { return console.log("DB connected!"); })
     .catch(function (e) { return console.log("error!", e); });
 var server = index_1.default.listen(PORT, function () {
