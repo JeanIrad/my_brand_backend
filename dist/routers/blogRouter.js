@@ -13,7 +13,7 @@ var blogRouter = (0, express_1.Router)();
 blogRouter
     .route("/")
     .get(getAllBlogs)
-    .post(function (req, file, next) {
+    .post(function (req, res, next) {
     console.log("receiving", req.body);
     if (req.file) {
         console.log(req.file.filename);

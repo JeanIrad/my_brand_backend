@@ -12,7 +12,7 @@ blogRouter
   .route("/")
   .get(getAllBlogs)
   .post(
-    (req, file, next) => {
+    (req, res, next) => {
       console.log("receiving", req.body);
       if (req.file) {
         console.log(req.file.filename);

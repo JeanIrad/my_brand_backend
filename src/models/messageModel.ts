@@ -1,5 +1,5 @@
 import mongoose, { model, Schema } from "mongoose";
-import { userSchema } from "./userModel";
+// import { userSchema } from "./userModel";
 import validator from "validator";
 
 const Message = model(

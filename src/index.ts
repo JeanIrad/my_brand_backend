@@ -22,7 +22,7 @@ const { sendErrorDev } = GlobalError;
 const { verifyUserEmail } = UserController;
 
 const app = express();
-// app.use(cookieParser());
+app.use(morgan("dev"));
 app.use(
   cors({
     origin: "*",
@@ -30,12 +30,8 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
-// app.use(bodyParser.)
 
-app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.status(200).json({
     status: "success",

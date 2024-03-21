@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -68,7 +79,6 @@ var AuthController = /** @class */ (function () {
         return __generator(_a, function (_c) {
             switch (_c.label) {
                 case 0:
-                    console.log(req.body);
                     _b = req.body, email = _b.email, password = _b.password, firstName = _b.firstName, lastName = _b.lastName, isAdmin = _b.isAdmin;
                     return [4 /*yield*/, userModel_1.default.findOne({ email: email })];
                 case 1:
@@ -97,11 +107,7 @@ var AuthController = /** @class */ (function () {
                         firstName: newUser.firstName,
                         isAdmin: newUser.isAdmin,
                     };
-                    res.status(201).json({
-                        status: "success",
-                        // data: sendUserData,
-                        message: "user created succefuly!",
-                    });
+                    res.status(201).json(__assign(__assign({ status: "success" }, sendUserData), { message: "user created succefuly!" }));
                     return [2 /*return*/];
             }
         });
@@ -131,6 +137,7 @@ var AuthController = /** @class */ (function () {
                     res.status(200).json({
                         status: "success",
                         message: "logged in successfully!",
+                        id: user._id,
                         token: token,
                     });
                     return [2 /*return*/];

@@ -8,9 +8,8 @@ const PORT = process.env.PORT || 6000;
 const DB_LOCAL: string = process.env.DB_LOCAL!;
 const DB_LOCAL_TEST: string = process.env.DB_LOCAL_TEST!;
 const DB: string = process.env.DB!;
-console.log(__dirname);
 mongoose
-  .connect(DB)
+  .connect(DB_LOCAL)
   .then(() => console.log("DB connected!"))
   .catch((e) => console.log("error!", e));
 

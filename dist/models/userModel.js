@@ -1,4 +1,30 @@
 "use strict";
+// import { model, Schema, Document } from "mongoose";
+// import bcrypt from "bcrypt";
+// import validator from "validator";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39,27 +65,69 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userSchema = void 0;
-var mongoose_1 = require("mongoose");
+// interface UserDocument extends Document {
+//   password: string;
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   isAdmin?: boolean;
+//   isVerified?: boolean;
+// }
+// export const userSchema = new Schema({
+//   firstName: {
+//     type: String,
+//     required: [true, "please provide the first Name"],
+//   },
+//   lastName: {
+//     type: String,
+//     required: [true, "please provide the last Name"],
+//   },
+//   email: {
+//     type: String,
+//     required: [true, "Email is required"],
+//     unique: true,
+//     lower: true,
+//     validate: [validator.isEmail, "Please provide a valid email"],
+//   },
+//   password: {
+//     type: String,
+//     required: [true, "A password is required"],
+//     select: false,
+//     minlength: 8,
+//   },
+//   isAdmin: {
+//     type: Boolean,
+//     default: false,
+//   },
+//   isVerified: {
+//     type: Boolean,
+//     default: false,
+//   },
+// });
+// userSchema.pre("save", async function (next) {
+//   this.password = await bcrypt.hash(this.password, 12);
+//   next();
+// });
+// const User = model("User", userSchema);
+// export default User;
+var mongoose_1 = __importStar(require("mongoose"));
 var bcrypt_1 = __importDefault(require("bcrypt"));
 var validator_1 = __importDefault(require("validator"));
-// interface User extends Document{
-//     password: string
-// }
-exports.userSchema = new mongoose_1.Schema({
+// Define the schema for User model
+var userSchema = new mongoose_1.Schema({
     firstName: {
         type: String,
-        required: [true, "please provide the first Name"],
+        required: [true, "Please provide the first Name"],
     },
     lastName: {
         type: String,
-        required: [true, "please provide the last Name"],
+        required: [true, "Please provide the last Name"],
     },
     email: {
         type: String,
         required: [true, "Email is required"],
         unique: true,
-        lower: true,
+        lowercase: true,
         validate: [validator_1.default.isEmail, "Please provide a valid email"],
     },
     password: {
@@ -77,12 +145,15 @@ exports.userSchema = new mongoose_1.Schema({
         default: false,
     },
 });
-exports.userSchema.pre("save", function (next) {
+// Hash the password before saving
+userSchema.pre("save", function (next) {
     return __awaiter(this, void 0, void 0, function () {
         var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
+                    if (!this.isModified("password"))
+                        return [2 /*return*/, next()];
                     _a = this;
                     return [4 /*yield*/, bcrypt_1.default.hash(this.password, 12)];
                 case 1:
@@ -93,5 +164,6 @@ exports.userSchema.pre("save", function (next) {
         });
     });
 });
-var User = (0, mongoose_1.model)("User", exports.userSchema);
+// Define the User model
+var User = mongoose_1.default.model("User", userSchema);
 exports.default = User;

@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var morgan_1 = __importDefault(require("morgan"));
-var body_parser_1 = __importDefault(require("body-parser"));
 var cors_1 = __importDefault(require("cors"));
 var swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 var blogRouter_1 = __importDefault(require("./routers/blogRouter"));
@@ -23,17 +22,13 @@ var handleInvalidUrl = invalidUrl_1.default.handleInvalidUrl;
 var sendErrorDev = errorController_1.default.sendErrorDev;
 var verifyUserEmail = userController_1.default.verifyUserEmail;
 var app = (0, express_1.default)();
-// app.use(cookieParser());
+app.use((0, morgan_1.default)("dev"));
 app.use((0, cors_1.default)({
     origin: "*",
     methods: "*",
 }));
 app.use(express_1.default.json());
-app.use(body_parser_1.default.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express_1.default.urlencoded({ extended: true }));
-// app.use(bodyParser.)
-app.use((0, morgan_1.default)("dev"));
 app.get("/", function (req, res) {
     res.status(200).json({
         status: "success",

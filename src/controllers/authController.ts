@@ -33,7 +33,7 @@ const checkLoginPassword = async (
 export default class AuthController {
   static signup = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
-      console.log(req.body);
+      // console.log(req.body);
       const { email, password, firstName, lastName, isAdmin } = req.body;
       const user = await User.findOne({ email });
       if (user)
@@ -61,7 +61,7 @@ export default class AuthController {
 
       res.status(201).json({
         status: "success",
-        // data: sendUserData,
+        ...sendUserData,
         message: "user created succefuly!",
       });
     }
@@ -80,6 +80,7 @@ export default class AuthController {
       res.status(200).json({
         status: "success",
         message: "logged in successfully!",
+        id: user._id,
         token,
       });
     }

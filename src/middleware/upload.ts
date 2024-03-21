@@ -51,5 +51,5 @@ const upload = multer({
   limits: { fileSize: 1024 * 1024 },
   fileFilter: filterFile,
 });
-console.log(__dirname);
+// console.log(__dirname);
 export default upload;

@@ -27,6 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importStar(require("mongoose"));
+// import { userSchema } from "./userModel";
 var validator_1 = __importDefault(require("validator"));
 var Message = (0, mongoose_1.model)("Message", new mongoose_1.Schema({
     fullName: {
