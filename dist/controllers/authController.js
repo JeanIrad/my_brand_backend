@@ -138,6 +138,7 @@ var AuthController = /** @class */ (function () {
                         status: "success",
                         message: "logged in successfully!",
                         id: user._id,
+                        isAdmin: user.isAdmin,
                         token: token,
                     });
                     return [2 /*return*/];

@@ -81,6 +81,7 @@ export default class AuthController {
         status: "success",
         message: "logged in successfully!",
         id: user._id,
+        isAdmin: user.isAdmin,
         token,
       });
     }
