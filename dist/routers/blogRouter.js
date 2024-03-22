@@ -26,6 +26,6 @@ blogRouter
 blogRouter
     .route("/:id")
     .get(getBlog)
-    .put(protectRoutes, checkAdmin, updateBlog)
+    .patch(protectRoutes, checkAdmin, updateBlog)
     .delete(protectRoutes, checkAdmin, deleteBlog);
 exports.default = blogRouter;
