@@ -26,7 +26,7 @@ blogRouter
   );
 blogRouter
   .route("/:id")
-  .get(protectRoutes, getBlog)
+  .get(getBlog)
   .put(protectRoutes, checkAdmin, updateBlog)
   .delete(protectRoutes, checkAdmin, deleteBlog);
 

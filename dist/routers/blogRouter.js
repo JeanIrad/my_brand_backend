@@ -25,7 +25,7 @@ blogRouter
 }, upload_1.default.single("image"), createBlog);
 blogRouter
     .route("/:id")
-    .get(protectRoutes, getBlog)
+    .get(getBlog)
     .put(protectRoutes, checkAdmin, updateBlog)
     .delete(protectRoutes, checkAdmin, deleteBlog);
 exports.default = blogRouter;
