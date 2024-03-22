@@ -44,6 +44,7 @@ export default class BlogController {
   static updateBlog = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
       const id = req.params.id;
+      console.log(req.body, req.headers.authorization);
       const blog = await Blog.findByIdAndUpdate(id, req.body, {
         new: true,
         runValidators: true,

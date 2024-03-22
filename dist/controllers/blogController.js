@@ -102,6 +102,7 @@ var BlogController = /** @class */ (function () {
             switch (_b.label) {
                 case 0:
                     id = req.params.id;
+                    console.log(req.body, req.headers.authorization);
                     return [4 /*yield*/, blogModel_1.default.findByIdAndUpdate(id, req.body, {
                             new: true,
                             runValidators: true,
