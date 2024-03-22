@@ -54,7 +54,10 @@ var BlogController = /** @class */ (function () {
         var blogs;
         return __generator(_a, function (_b) {
             switch (_b.label) {
-                case 0: return [4 /*yield*/, blogModel_1.default.find({}, { __v: false })];
+                case 0: return [4 /*yield*/, blogModel_1.default.find({}, { __v: false }).populate({
+                        path: "author",
+                        select: "firstName lastName",
+                    })];
                 case 1:
                     blogs = _b.sent();
                     res.status(200).json({
@@ -161,7 +164,10 @@ var BlogController = /** @class */ (function () {
             switch (_b.label) {
                 case 0:
                     id = req.params.id;
-                    return [4 /*yield*/, blogModel_1.default.findById(id)];
+                    return [4 /*yield*/, blogModel_1.default.findById(id).populate({
+                            path: "author",
+                            select: "firstName lastName",
+                        })];
                 case 1:
                     blog = _b.sent();
                     if (!blog) {

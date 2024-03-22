@@ -11,7 +11,10 @@ import fs from "fs";
 export default class BlogController {
   static getAllBlogs = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
-      const blogs = await Blog.find({}, { __v: false });
+      const blogs = await Blog.find({}, { __v: false }).populate({
+        path: "author",
+        select: "firstName lastName",
+      });
       res.status(200).json({
         status: "success",
         size: blogs.length,
@@ -92,7 +95,10 @@ export default class BlogController {
   static getBlog = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
       const id = req.params.id;
-      const blog = await Blog.findById(id);
+      const blog = await Blog.findById(id).populate({
+        path: "author",
+        select: "firstName lastName",
+      });
       if (!blog) {
         return next(new AppError(`No blog found with the id ${id}`, 404));
       }
