@@ -3,8 +3,8 @@ import catchAsync from "../src/utils/catchAsync";
 
 jest.mock("express");
 
-describe.skip("asyncMiddleware", () => {
-  it.skip("should handle async function correctly", async () => {
+describe("asyncMiddleware", () => {
+  it("should handle async function correctly", async () => {
     const mockRequest = {} as Request;
     const mockResponse = {} as Response;
     const mockNextFunction = jest.fn() as NextFunction;
@@ -20,7 +20,7 @@ describe.skip("asyncMiddleware", () => {
     expect(mockNextFunction).not.toHaveBeenCalled(); // assuming no error
   });
 
-  it.skip("should pass error to next function if async function throws", async () => {
+  it("should pass error to next function if async function throws", async () => {
     const mockRequest = {} as Request;
     const mockResponse = {} as Response;
     const mockNextFunction = jest.fn() as NextFunction;

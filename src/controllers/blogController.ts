@@ -88,7 +88,7 @@ export default class BlogController {
       }
       res.status(200).json({
         status: "success",
-        message: "deleted",
+        message: "deleted successfully!",
         fileFoundMssg,
       });
     }

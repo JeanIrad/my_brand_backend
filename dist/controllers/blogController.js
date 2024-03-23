@@ -152,7 +152,7 @@ var BlogController = /** @class */ (function () {
                     }
                     res.status(200).json({
                         status: "success",
-                        message: "deleted",
+                        message: "deleted successfully!",
                         fileFoundMssg: fileFoundMssg,
                     });
                     return [2 /*return*/];

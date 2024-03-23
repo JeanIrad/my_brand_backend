@@ -27,17 +27,7 @@ blogRouter
 blogRouter
   .route("/:id")
   .get(getBlog)
-  .patch(
-    (req, res, next) => {
-      console.log("body is:", req.body);
-      console.log("............logging..........");
-      next();
-    },
-    protectRoutes,
-    checkAdmin,
-    upload.single("image"),
-    updateBlog
-  )
+  .patch(protectRoutes, checkAdmin, upload.single("image"), updateBlog)
   .delete(protectRoutes, checkAdmin, deleteBlog);
 
 export default blogRouter;

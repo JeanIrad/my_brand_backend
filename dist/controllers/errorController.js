@@ -41,7 +41,7 @@ var GlobalError = /** @class */ (function () {
                 message: "token expired, please login to proceed!",
             });
         if (err.name === "CastError")
-            return res.status(400).json({
+            return res.status(404).json({
                 // message: `Invalid ${err.path}: ${err.value}`,
                 message: "Invalid ".concat(castError.path, ": ").concat(castError.value, "."),
             });

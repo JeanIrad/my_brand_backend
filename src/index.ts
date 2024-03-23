@@ -16,6 +16,7 @@ import skillsRouter from "./routers/skillsRoute";
 import portfolioRouter from "./routers/portfolioRoute";
 import aboutMeRouter from "./routers/aboutMeRoute";
 import swaggerdocs from "./swagger/swaggerdocs";
+import commentRouter from "./routers/commentRouter";
 
 const { handleInvalidUrl } = HandleInvalidUrl;
 const { sendErrorDev } = GlobalError;
@@ -46,6 +47,7 @@ app.use("/api/messages/", messageRouter);
 app.use("/api/skills/", skillsRouter);
 app.use("/api/aboutme/", aboutMeRouter);
 app.use("/api/portfolio/", portfolioRouter);
+app.use("/api/comments/", commentRouter);
 
 app.use("/api-docs", swaggerui.serve, swaggerui.setup(swaggerdocs));
 

@@ -9,7 +9,7 @@
   "scripts": {
     "dev": " nodemon ./src/server.ts",
     "start": "node ./dist/server.js && set NODE_ENV=production",
-    "test": "jest --forceExit ",
+    "test": "jest --forceExit --coverage",
     "swagger": "swagger-jsdoc -o ./swagger.json ./swaggerOptions.ts",
     "build": "tsc"
   },

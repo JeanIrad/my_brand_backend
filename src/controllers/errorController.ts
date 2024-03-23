@@ -35,7 +35,7 @@ export default class GlobalError {
         message: "token expired, please login to proceed!",
       });
     if (err.name === "CastError")
-      return res.status(400).json({
+      return res.status(404).json({
         // message: `Invalid ${err.path}: ${err.value}`,
         message: `Invalid ${castError.path}: ${castError.value}.`,
       });

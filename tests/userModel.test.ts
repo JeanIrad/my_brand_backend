@@ -5,7 +5,7 @@ import validator from "validator";
 import { UserDocument } from "../src/models/userModel";
 config({ path: `${process.cwd()}/src/env/config.env` });
 
-describe.skip("User Model", () => {
+describe("User Model", () => {
   let User: mongoose.Model<UserDocument>;
 
   beforeAll(async () => {
@@ -21,12 +21,12 @@ describe.skip("User Model", () => {
     await mongoose.disconnect();
   });
 
-  it("should hash the password before saving", async () => {
+  it.skip("should hash the password before saving", async () => {
     // Create a new user instance
     const userData = {
       firstName: "John",
       lastName: "Doe",
-      email: "john.doe@example.com",
+      email: "jean1.doe@example.com", // change email to avoid duplication error
       password: "password123",
     };
     const user = new User(userData);
