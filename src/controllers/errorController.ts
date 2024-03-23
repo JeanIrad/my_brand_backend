@@ -26,6 +26,11 @@ export default class GlobalError {
         // name: err.name,
       });
     }
+    if (err.name === "TypeError") {
+      return res.status(err.statusCode).json({
+        message: err.message,
+      });
+    }
     if (err.name === "JsonWebTokenError")
       return res.status(400).json({
         message: `invalid token!`,
