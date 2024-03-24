@@ -10,13 +10,10 @@ var messageRouter = (0, express_1.Router)();
 messageRouter
     .route("/")
     .get(authController_1.default.protectRoutes, authController_1.default.checkAdmin, message_controller_1.default.getAllMessages)
-    .post(
-// AuthController.protectRoutes,
-// AuthController.checkAdmin,
-message_controller_1.default.createMessage);
+    .post(message_controller_1.default.createMessage);
 messageRouter
     .route("/:id")
     .get(authController_1.default.protectRoutes, authController_1.default.checkAdmin, message_controller_1.default.getMessage)
-    .patch(authController_1.default.protectRoutes, authController_1.default.checkAdmin, message_controller_1.default.updateMessage)
+    .patch(message_controller_1.default.updateMessage)
     .delete(authController_1.default.protectRoutes, authController_1.default.checkAdmin, message_controller_1.default.deleteMessage);
 exports.default = messageRouter;

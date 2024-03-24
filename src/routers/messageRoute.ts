@@ -10,11 +10,7 @@ messageRouter
     AuthController.checkAdmin,
     MessageController.getAllMessages
   )
-  .post(
-    // AuthController.protectRoutes,
-    // AuthController.checkAdmin,
-    MessageController.createMessage
-  );
+  .post(MessageController.createMessage);
 messageRouter
   .route("/:id")
   .get(
@@ -22,11 +18,7 @@ messageRouter
     AuthController.checkAdmin,
     MessageController.getMessage
   )
-  .patch(
-    AuthController.protectRoutes,
-    AuthController.checkAdmin,
-    MessageController.updateMessage
-  )
+  .patch(MessageController.updateMessage)
   .delete(
     AuthController.protectRoutes,
     AuthController.checkAdmin,

@@ -23,8 +23,17 @@ const Message = model(
       validate: [validator.isEmail, "provide a valid email"],
     },
     interest: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Interest",
+      type: String,
+      enum: [
+        "Web design",
+        "data Analysis",
+        "Mobile Development",
+        "UI/UX Design",
+        "Backend Development",
+        "Frontend Development",
+        "Fullstack Development",
+        "Others  ",
+      ],
       required: true,
     },
   })
