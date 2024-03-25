@@ -36,4 +36,4 @@ exports.Comment = (0, mongoose_1.model)("Comment", new mongoose_1.Schema({
         lower: true,
         minlength: 2,
     },
-}));
+}, { timestamps: true }));
