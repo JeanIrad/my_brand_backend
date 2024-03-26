@@ -70,6 +70,24 @@ var MessageController = /** @class */ (function () {
             }
         });
     }); });
+    MessageController.getCommentByBlog = (0, catchAsync_1.default)(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+        var comments;
+        return __generator(_a, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, comment_model_1.Comment.find({ blog: req.params.id }, { __v: false }).sort({ createdAt: -1 })];
+                case 1:
+                    comments = _b.sent();
+                    if (!comments)
+                        return [2 /*return*/, next(new appError_1.default("no comment found", 404))];
+                    res.status(200).json({
+                        status: "success",
+                        size: comments.length,
+                        data: comments,
+                    });
+                    return [2 /*return*/];
+            }
+        });
+    }); });
     MessageController.createComment = (0, catchAsync_1.default)(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
         var newComment;
         return __generator(_a, function (_b) {

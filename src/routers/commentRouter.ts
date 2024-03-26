@@ -3,6 +3,7 @@ import CommentController from "../controllers/comment.controller";
 import AuthController from "../controllers/authController";
 
 const commentRouter = Router();
+commentRouter.route("/blog/:id").get(CommentController.getCommentByBlog);
 commentRouter
   .route("/")
   .get(CommentController.getAllComments)

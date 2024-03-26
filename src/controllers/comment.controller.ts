@@ -20,6 +20,20 @@ export default class MessageController {
       });
     }
   );
+  static getCommentByBlog = catchAsync(
+    async (req: Request, res: Response, next: NextFunction) => {
+      const comments = await Comment.find(
+        { blog: req.params.id },
+        { __v: false }
+      ).sort({ createdAt: -1 });
+      if (!comments) return next(new AppError("no comment found", 404));
+      res.status(200).json({
+        status: "success",
+        size: comments.length,
+        data: comments,
+      });
+    }
+  );
 
   static createComment = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {

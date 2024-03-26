@@ -7,6 +7,7 @@ var express_1 = require("express");
 var comment_controller_1 = __importDefault(require("../controllers/comment.controller"));
 var authController_1 = __importDefault(require("../controllers/authController"));
 var commentRouter = (0, express_1.Router)();
+commentRouter.route("/blog/:id").get(comment_controller_1.default.getCommentByBlog);
 commentRouter
     .route("/")
     .get(comment_controller_1.default.getAllComments)
