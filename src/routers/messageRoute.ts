@@ -3,6 +3,7 @@ import MessageController from "../controllers/message.controller";
 import AuthController from "../controllers/authController";
 
 const messageRouter = Router();
+messageRouter.post("/responses", MessageController.sendResponse);
 messageRouter
   .route("/")
   .get(

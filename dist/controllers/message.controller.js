@@ -42,6 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var catchAsync_1 = __importDefault(require("../utils/catchAsync"));
 var appError_1 = __importDefault(require("../utils/appError"));
 var messageModel_1 = __importDefault(require("./../models/messageModel"));
+var sendEmailResponses_1 = __importDefault(require("../middleware/sendEmailResponses"));
 var MessageController = /** @class */ (function () {
     function MessageController() {
     }
@@ -141,6 +142,16 @@ var MessageController = /** @class */ (function () {
             }
         });
     }); });
+    MessageController.sendResponse = function (req, res, next) {
+        var _b = req.body, name = _b.name, reason = _b.reason, content = _b.content, email = _b.email;
+        if (!name || !reason || !content || !email)
+            return next(new appError_1.default("Please provide all the required fields", 400));
+        (0, sendEmailResponses_1.default)(name, reason, content, email);
+        res.status(200).json({
+            status: "success",
+            message: "response sent successfully",
+        });
+    };
     return MessageController;
 }());
 exports.default = MessageController;

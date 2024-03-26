@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import catchAsync from "../utils/catchAsync";
 import AppError from "../utils/appError";
 import Message from "./../models/messageModel";
+import sendResponse from "../middleware/sendEmailResponses";
 
 export default class MessageController {
   static getAllMessages = catchAsync(
@@ -71,4 +72,14 @@ export default class MessageController {
       });
     }
   );
+  static sendResponse = (req: Request, res: Response, next: NextFunction) => {
+    const { name, reason, content, email } = req.body;
+    if (!name || !reason || !content || !email)
+      return next(new AppError("Please provide all the required fields", 400));
+    sendResponse(name, reason, content, email);
+    res.status(200).json({
+      status: "success",
+      message: "response sent successfully",
+    });
+  };
 }
