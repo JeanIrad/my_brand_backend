@@ -8,6 +8,7 @@ var portfolioSchema = new mongoose_1.Schema({
         required: [true, "a portfolio must have a name"],
         trim: true,
         minlength: 6,
+        unique: true,
     },
     description: {
         type: String,
@@ -15,7 +16,7 @@ var portfolioSchema = new mongoose_1.Schema({
         trim: true,
         minlength: 20,
     },
-    image: {
+    imageUrl: {
         type: String,
         required: true,
     },

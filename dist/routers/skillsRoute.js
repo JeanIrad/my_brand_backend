@@ -11,7 +11,7 @@ var skillsRouter = (0, express_1.Router)();
 skillsRouter
     .route("/")
     .get(authController_1.default.protectRoutes, authController_1.default.checkAdmin, skills_controller_1.default.getAllSkills)
-    .post(authController_1.default.protectRoutes, authController_1.default.checkAdmin, upload_1.default.single("image"), skills_controller_1.default.createSkill);
+    .post(authController_1.default.protectRoutes, authController_1.default.checkAdmin, (0, upload_1.default)("skills", "image"), skills_controller_1.default.createSkill);
 skillsRouter
     .route("/:id")
     .get(authController_1.default.protectRoutes, authController_1.default.checkAdmin, skills_controller_1.default.getSkill)

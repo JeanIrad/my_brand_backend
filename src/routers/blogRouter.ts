@@ -7,7 +7,7 @@ const { getAllBlogs, createBlog, deleteBlog, updateBlog, getBlog } =
   blogController;
 const { protectRoutes, checkAdmin } = AuthController;
 const blogRouter = Router();
-
+const blogUpload = upload("blogs", "image");
 blogRouter
   .route("/")
   .get(getAllBlogs)
@@ -21,13 +21,13 @@ blogRouter
         next();
       }
     },
-    upload.single("image"),
+    blogUpload,
     createBlog
   );
 blogRouter
   .route("/:id")
   .get(getBlog)
-  .patch(protectRoutes, checkAdmin, upload.single("image"), updateBlog)
+  .patch(protectRoutes, checkAdmin, blogUpload, updateBlog)
   .delete(protectRoutes, checkAdmin, deleteBlog);
 
 export default blogRouter;

@@ -6,6 +6,7 @@ const portfolioSchema = new Schema({
     required: [true, "a portfolio must have a name"],
     trim: true,
     minlength: 6,
+    unique: true,
   },
   description: {
     type: String,
@@ -13,7 +14,7 @@ const portfolioSchema = new Schema({
     trim: true,
     minlength: 20,
   },
-  image: {
+  imageUrl: {
     type: String,
     required: true,
   },

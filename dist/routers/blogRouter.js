@@ -10,6 +10,7 @@ var upload_1 = __importDefault(require("../middleware/upload"));
 var getAllBlogs = blogController_1.default.getAllBlogs, createBlog = blogController_1.default.createBlog, deleteBlog = blogController_1.default.deleteBlog, updateBlog = blogController_1.default.updateBlog, getBlog = blogController_1.default.getBlog;
 var protectRoutes = authController_1.default.protectRoutes, checkAdmin = authController_1.default.checkAdmin;
 var blogRouter = (0, express_1.Router)();
+var blogUpload = (0, upload_1.default)("blogs", "image");
 blogRouter
     .route("/")
     .get(getAllBlogs)
@@ -22,10 +23,10 @@ blogRouter
     else {
         next();
     }
-}, upload_1.default.single("image"), createBlog);
+}, blogUpload, createBlog);
 blogRouter
     .route("/:id")
     .get(getBlog)
-    .patch(protectRoutes, checkAdmin, upload_1.default.single("image"), updateBlog)
+    .patch(protectRoutes, checkAdmin, blogUpload, updateBlog)
     .delete(protectRoutes, checkAdmin, deleteBlog);
 exports.default = blogRouter;

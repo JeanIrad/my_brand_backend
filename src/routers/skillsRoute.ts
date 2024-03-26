@@ -14,7 +14,7 @@ skillsRouter
   .post(
     AuthController.protectRoutes,
     AuthController.checkAdmin,
-    upload.single("image"),
+    upload("skills", "image"),
     skillsController.createSkill
   );
 skillsRouter

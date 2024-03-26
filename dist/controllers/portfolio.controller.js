@@ -67,36 +67,30 @@ var PortfolioController = /** @class */ (function () {
         });
     }); });
     PortfolioController.createPortfolio = (0, catchAsync_1.default)(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-        var _b, name, createdBy, imageUpload, newPortfolio_1, newPortfolio;
+        var _b, name, description, imageUpload, newPortfolio;
         return __generator(_a, function (_c) {
             switch (_c.label) {
                 case 0:
-                    _b = req.body, name = _b.name, createdBy = _b.createdBy;
+                    _b = req.body, name = _b.name, description = _b.description;
+                    console.log(req.body);
                     if (!req.file) return [3 /*break*/, 3];
                     return [4 /*yield*/, cloudinary_1.default.uploader.upload(req.file.path)];
                 case 1:
                     imageUpload = _c.sent();
-                    newPortfolio_1 = new portfolioModel_1.Portfolio({
+                    newPortfolio = new portfolioModel_1.Portfolio({
                         name: name,
-                        createdBy: createdBy,
+                        description: description,
                         imageUrl: imageUpload.secure_url,
                     });
-                    return [4 /*yield*/, newPortfolio_1.save()];
+                    return [4 /*yield*/, newPortfolio.save()];
                 case 2:
                     _c.sent();
                     res.status(201).json({
                         status: "success",
-                        newPortfolio: newPortfolio_1,
-                    });
-                    _c.label = 3;
-                case 3: return [4 /*yield*/, portfolioModel_1.Portfolio.create({ name: name, createdBy: createdBy })];
-                case 4:
-                    newPortfolio = _c.sent();
-                    res.status(201).json({
-                        status: "success",
                         newPortfolio: newPortfolio,
                     });
-                    return [2 /*return*/];
+                    _c.label = 3;
+                case 3: return [2 /*return*/];
             }
         });
     }); });

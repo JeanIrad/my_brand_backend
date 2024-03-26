@@ -15,7 +15,7 @@ portfolioRouter
   .post(
     AuthController.protectRoutes,
     AuthController.checkAdmin,
-    upload.single("image"),
+    upload("portfolios", "image"),
     PortfolioController.createPortfolio
   );
 portfolioRouter

@@ -18,12 +18,14 @@ export default class PortfolioController {
   );
   static createPortfolio = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
-      const { name, createdBy } = req.body;
+      const { name, description } = req.body;
+      console.log(req.body);
+
       if (req.file) {
         const imageUpload = await cloudinary.uploader.upload(req.file.path);
         const newPortfolio = new Portfolio({
           name,
-          createdBy,
+          description,
           imageUrl: imageUpload.secure_url,
         });
         await newPortfolio.save();
@@ -32,11 +34,11 @@ export default class PortfolioController {
           newPortfolio,
         });
       }
-      const newPortfolio = await Portfolio.create({ name, createdBy });
-      res.status(201).json({
-        status: "success",
-        newPortfolio,
-      });
+      // const newPortfolio = await Portfolio.create({ name, createdBy });
+      // res.status(201).json({
+      //   status: "success",
+      //   newPortfolio,
+      // });
     }
   );
   static updatePortfolio = catchAsync(
