@@ -152,17 +152,17 @@ var AuthController = /** @class */ (function () {
                 case 0:
                     authorization = req.headers.authorization;
                     if (!authorization) {
-                        return [2 /*return*/, next(new appError_1.default("you are not authorized, sign up!", 401))];
+                        return [2 /*return*/, next(new appError_1.default("you are not authorized, sign up!", 400))];
                     }
                     token = authorization.split(" ")[1];
                     if (!token)
-                        return [2 /*return*/, next(new appError_1.default("Not authorized, please provide a valid token", 401))];
+                        return [2 /*return*/, next(new appError_1.default("Not authorized, please provide a valid token", 400))];
                     decodedToken = JWTService.verifyToken(token, process.env.JWT_SECRET_KEY);
                     return [4 /*yield*/, userModel_1.default.findById(decodedToken.id)];
                 case 1:
                     freshUser = _b.sent();
                     if (!freshUser)
-                        return [2 /*return*/, next(new appError_1.default("Invalid token provided", 401))];
+                        return [2 /*return*/, next(new appError_1.default("Invalid token provided", 400))];
                     req.user = freshUser;
                     next();
                     return [2 /*return*/];

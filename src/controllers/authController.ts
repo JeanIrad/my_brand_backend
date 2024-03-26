@@ -90,12 +90,12 @@ export default class AuthController {
     async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
       const authorization = req.headers.authorization;
       if (!authorization) {
-        return next(new AppError("you are not authorized, sign up!", 401));
+        return next(new AppError("you are not authorized, sign up!", 400));
       }
       const token = authorization.split(" ")[1];
       if (!token)
         return next(
-          new AppError("Not authorized, please provide a valid token", 401)
+          new AppError("Not authorized, please provide a valid token", 400)
         );
 
       const decodedToken = JWTService.verifyToken(
@@ -103,7 +103,7 @@ export default class AuthController {
         process.env.JWT_SECRET_KEY!
       ) as any;
       const freshUser = await User.findById(decodedToken.id);
-      if (!freshUser) return next(new AppError("Invalid token provided", 401));
+      if (!freshUser) return next(new AppError("Invalid token provided", 400));
 
       req.user = freshUser;
       next();
