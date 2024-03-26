@@ -15,6 +15,7 @@ export const Comment = model(
         lower: true,
         minlength: 2,
       },
+      blog: { type: mongoose.Schema.Types.ObjectId, ref: "Blog" },
     },
     { timestamps: true }
   )
