@@ -146,6 +146,20 @@ var MessageController = /** @class */ (function () {
             }
         });
     }); });
+    MessageController.deletAllComments = (0, catchAsync_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(_a, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, comment_model_1.Comment.deleteMany({})];
+                case 1:
+                    _b.sent();
+                    res.status(204).json({
+                        status: "success",
+                        message: "All comments deleted",
+                    });
+                    return [2 /*return*/];
+            }
+        });
+    }); });
     return MessageController;
 }());
 exports.default = MessageController;

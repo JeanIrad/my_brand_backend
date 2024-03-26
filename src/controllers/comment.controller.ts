@@ -74,4 +74,11 @@ export default class MessageController {
       });
     }
   );
+  static deletAllComments = catchAsync(async (req: Request, res: Response) => {
+    await Comment.deleteMany({});
+    res.status(204).json({
+      status: "success",
+      message: "All comments deleted",
+    });
+  });
 }

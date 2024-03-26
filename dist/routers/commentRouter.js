@@ -10,7 +10,8 @@ var commentRouter = (0, express_1.Router)();
 commentRouter
     .route("/")
     .get(comment_controller_1.default.getAllComments)
-    .post(comment_controller_1.default.createComment);
+    .post(comment_controller_1.default.createComment)
+    .delete(comment_controller_1.default.deletAllComments);
 commentRouter
     .route("/:id")
     .get(comment_controller_1.default.getComment)
