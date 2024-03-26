@@ -6,7 +6,7 @@ const commentRouter = Router();
 commentRouter
   .route("/")
   .get(CommentController.getAllComments)
-  .post(AuthController.protectRoutes, CommentController.createComment);
+  .post(CommentController.createComment);
 commentRouter
   .route("/:id")
   .get(CommentController.getComment)

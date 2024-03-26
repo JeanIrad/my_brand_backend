@@ -10,7 +10,7 @@ var commentRouter = (0, express_1.Router)();
 commentRouter
     .route("/")
     .get(comment_controller_1.default.getAllComments)
-    .post(authController_1.default.protectRoutes, comment_controller_1.default.createComment);
+    .post(comment_controller_1.default.createComment);
 commentRouter
     .route("/:id")
     .get(comment_controller_1.default.getComment)
