@@ -6,7 +6,10 @@ import { Comment } from "./../models/comment.model";
 export default class MessageController {
   static getAllComments = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
-      const comments = await Comment.find({}, { __v: false });
+      const comments = await Comment.find({}, { __v: false }).populate({
+        path: "user",
+        select: "firstName",
+      });
       if (!comments) return next(new AppError("no comment found", 404));
       res.status(200).json({
         status: "success",

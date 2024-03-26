@@ -6,23 +6,11 @@ const commentRouter = Router();
 commentRouter
   .route("/")
   .get(CommentController.getAllComments)
-  .post(CommentController.createComment);
+  .post(AuthController.protectRoutes, CommentController.createComment);
 commentRouter
   .route("/:id")
-  .get(
-    AuthController.protectRoutes,
-    AuthController.checkAdmin,
-    CommentController.getComment
-  )
-  .patch(
-    AuthController.protectRoutes,
-    AuthController.checkAdmin,
-    CommentController.updateComment
-  )
-  .delete(
-    AuthController.protectRoutes,
-    AuthController.checkAdmin,
-    CommentController.deleteComment
-  );
+  .get(CommentController.getComment)
+  .patch(AuthController.protectRoutes, CommentController.updateComment)
+  .delete(AuthController.protectRoutes, CommentController.deleteComment);
 
 export default commentRouter;
