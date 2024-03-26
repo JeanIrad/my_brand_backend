@@ -25,7 +25,9 @@ export default class MessageController {
       const comments = await Comment.find(
         { blog: req.params.id },
         { __v: false }
-      ).sort({ createdAt: -1 });
+      )
+        .populate({ path: "user", select: "firstName" })
+        .sort({ createdAt: -1 });
       if (!comments) return next(new AppError("no comment found", 404));
       res.status(200).json({
         status: "success",

@@ -74,7 +74,9 @@ var MessageController = /** @class */ (function () {
         var comments;
         return __generator(_a, function (_b) {
             switch (_b.label) {
-                case 0: return [4 /*yield*/, comment_model_1.Comment.find({ blog: req.params.id }, { __v: false }).sort({ createdAt: -1 })];
+                case 0: return [4 /*yield*/, comment_model_1.Comment.find({ blog: req.params.id }, { __v: false })
+                        .populate({ path: "user", select: "firstName" })
+                        .sort({ createdAt: -1 })];
                 case 1:
                     comments = _b.sent();
                     if (!comments)
