@@ -9,7 +9,7 @@ var authController_1 = __importDefault(require("../controllers/authController"))
 var commentRouter = (0, express_1.Router)();
 commentRouter
     .route("/")
-    .get(authController_1.default.protectRoutes, authController_1.default.checkAdmin, comment_controller_1.default.getAllComments)
+    .get(comment_controller_1.default.getAllComments)
     .post(comment_controller_1.default.createComment);
 commentRouter
     .route("/:id")

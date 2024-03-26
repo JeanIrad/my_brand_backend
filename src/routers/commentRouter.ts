@@ -5,11 +5,7 @@ import AuthController from "../controllers/authController";
 const commentRouter = Router();
 commentRouter
   .route("/")
-  .get(
-    AuthController.protectRoutes,
-    AuthController.checkAdmin,
-    CommentController.getAllComments
-  )
+  .get(CommentController.getAllComments)
   .post(CommentController.createComment);
 commentRouter
   .route("/:id")
