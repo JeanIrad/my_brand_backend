@@ -144,6 +144,7 @@ var MessageController = /** @class */ (function () {
     }); });
     MessageController.sendResponse = function (req, res, next) {
         var _b = req.body, name = _b.name, reason = _b.reason, content = _b.content, email = _b.email;
+        console.log(req.body);
         if (!name || !reason || !content || !email)
             return next(new appError_1.default("Please provide all the required fields", 400));
         (0, sendEmailResponses_1.default)(name, reason, content, email);

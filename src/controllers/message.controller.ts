@@ -74,6 +74,7 @@ export default class MessageController {
   );
   static sendResponse = (req: Request, res: Response, next: NextFunction) => {
     const { name, reason, content, email } = req.body;
+    console.log(req.body);
     if (!name || !reason || !content || !email)
       return next(new AppError("Please provide all the required fields", 400));
     sendResponse(name, reason, content, email);

@@ -12,16 +12,34 @@ const generateEmailTemplate = (
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>REPLACE</title>
+        <title>${reason}</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+    
+            h2 {
+                color: #333;
+                text-align: center;
+            }
+    
+            p {
+                color: #333;
+                text-align: center;
+            } 
+        </style>
     </head>
     
     <body>
         <h2>Dear ${name},</h2>
-        <p>Thank you for your interest in our ${reason} program. We are excited to have you on board. We will be in touch with
-            you shortly.</p>
-            p>${content}</p>
+        <p>Thank you for your interest in our ${reason} program. We are excited to have you on board!</p>
+            <p>${content}</p>
         <p>Best regards,</p>
-        <p>Team REPLACE</p>
+        <p>Jean de Dieu IRADUKUNDA</p>
+        <p>+250723210196</p>
     </body>
     
     </html>`;
