@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import validator from "validator";
 
 const portfolioSchema = new Schema({
   name: {
@@ -17,6 +18,12 @@ const portfolioSchema = new Schema({
   imageUrl: {
     type: String,
     required: true,
+  },
+  url: {
+    type: String,
+    trim: true,
+    lower: true,
+    validate: [validator.isURL, "please provide a valide url"],
   },
 });
 export const Portfolio = model("Portfolio", portfolioSchema);
