@@ -10,11 +10,17 @@ var upload_1 = __importDefault(require("../middleware/upload"));
 var portfolioRouter = (0, express_1.Router)();
 portfolioRouter
     .route("/")
-    .get(authController_1.default.protectRoutes, authController_1.default.checkAdmin, portfolio_controller_1.default.getAllPortfolios)
+    .get(
+// AuthController.protectRoutes,
+// AuthController.checkAdmin,
+portfolio_controller_1.default.getAllPortfolios)
     .post(authController_1.default.protectRoutes, authController_1.default.checkAdmin, (0, upload_1.default)("portfolios", "image"), portfolio_controller_1.default.createPortfolio);
 portfolioRouter
     .route("/:id")
-    .get(authController_1.default.protectRoutes, authController_1.default.checkAdmin, portfolio_controller_1.default.getPortfolio)
+    .get(
+// AuthController.protectRoutes,
+// AuthController.checkAdmin,
+portfolio_controller_1.default.getPortfolio)
     .patch(authController_1.default.protectRoutes, authController_1.default.checkAdmin, portfolio_controller_1.default.updatePortfolio)
     .delete(authController_1.default.protectRoutes, authController_1.default.checkAdmin, portfolio_controller_1.default.deletePortfolio);
 exports.default = portfolioRouter;

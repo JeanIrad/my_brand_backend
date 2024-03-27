@@ -8,8 +8,8 @@ const portfolioRouter = Router();
 portfolioRouter
   .route("/")
   .get(
-    AuthController.protectRoutes,
-    AuthController.checkAdmin,
+    // AuthController.protectRoutes,
+    // AuthController.checkAdmin,
     PortfolioController.getAllPortfolios
   )
   .post(
@@ -21,8 +21,8 @@ portfolioRouter
 portfolioRouter
   .route("/:id")
   .get(
-    AuthController.protectRoutes,
-    AuthController.checkAdmin,
+    // AuthController.protectRoutes,
+    // AuthController.checkAdmin,
     PortfolioController.getPortfolio
   )
   .patch(
